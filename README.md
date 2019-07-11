@@ -6,11 +6,15 @@ Argument 1: Root path of pdf files
 Argument 2: Output directory for txt files.
 
 **Requirements:**
+
 *Runtime:*
-Java 1.7 JRE and above
+
+-Java 1.7 JRE and above
+
 *Compilation:*
-Java 1.7 JDK and above
-Maven 2.97 and above
+
+-Java 1.7 JDK and above
+-Maven 2.97 and above
 
 **How application works:**
 Application accpects a call with at least 2 arguments through cmd line e.g.: java pdfconverter C:\input\ C:\output\
