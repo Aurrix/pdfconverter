@@ -1,11 +1,22 @@
 package pdfconverter.converters;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.CompositeParser;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.parser.microsoft.OfficeParser;
+import org.apache.tika.parser.pdf.PDFParser;
+import org.apache.tika.parser.pdf.PDFParserConfig;
+import org.apache.tika.sax.BodyContentHandler;
+import org.xml.sax.ContentHandler;
+import org.xml.sax.SAXException;
 
 /**
  * @Author: Alisher Urunov
@@ -18,6 +29,32 @@ import org.apache.pdfbox.text.PDFTextStripper;
  *
  */
 public class PDFConverter {
+	
+	
+	public String convertWithFormatting(File currentPdfFile) {
+		
+		ContentHandler handler = new BodyContentHandler();
+		
+		Metadata metadata = new Metadata();
+		
+		ParseContext pcontext = new ParseContext();
+		
+		PDFParser parser = new PDFParser();
+		
+			
+		try {
+		parser.parse(new FileInputStream(currentPdfFile), handler, metadata,pcontext);
+		String result = handler.toString();
+		result = result.trim().replaceAll(" +", " ");
+		result = result.trim().replaceAll("\n+", "\n");
+			return result;
+		} catch (IOException | SAXException | TikaException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 
 	public String convert(File currentPdfFile) {
 		

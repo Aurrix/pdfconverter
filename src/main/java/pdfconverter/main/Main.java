@@ -47,8 +47,8 @@ public class Main {
 				File finalOutput = new File(outputFolder+File.separator+FilenameUtils.removeExtension(file.getName())+".txt");
 				System.out.println(outputFolder+File.separator+FilenameUtils.removeExtension(file.getName())+".txt");
 				file.createNewFile();
-				PrintWriter newTextFile = new PrintWriter(finalOutput,"UTF-8");
-				newTextFile.print(converter.convert(file));
+				PrintWriter newTextFile = new PrintWriter(finalOutput,"ASCII");
+				newTextFile.print(converter.convertWithFormatting(file));
 				newTextFile.close();
 			} catch (IOException e) {
 			
