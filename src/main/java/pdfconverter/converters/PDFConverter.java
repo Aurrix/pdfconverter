@@ -45,7 +45,7 @@ public class PDFConverter {
 		try {
 		parser.parse(new FileInputStream(currentPdfFile), handler, metadata,pcontext);
 		String result = handler.toString();
-		result = result.trim().replaceAll(" +", " ");
+		result = result.trim().replaceAll(" +", "\n");
 		result = result.trim().replaceAll("\n+", "\n");
 			return result;
 		} catch (IOException | SAXException | TikaException e) {
