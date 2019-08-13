@@ -25,8 +25,20 @@ public class PDFConverterApp {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-		PDFToTextConverter converter = new PDFToTextConverter();
+		convert(args);
+	}
+	
+	/**
+	 * Accept arguments that must include 2 paths
+	 * Function reads first path and converts pdfs
+	 * to txt files.
+	 * Only .pdf files in directory are converted.
+	 * Files saved to second path. If there is no such
+	 * directory java will make one.
+	 * @param args
+	*/
+	public static void convert(String[] args) {
+PDFToTextConverter converter = new PDFToTextConverter();
 		
 		File[] listOFPdfs = new File(args[0]).getAbsoluteFile().listFiles(new FilenameFilter() {
 			@Override
@@ -57,7 +69,5 @@ public class PDFConverterApp {
 			} 			
 			
 		}
-
 	}
-	
 }

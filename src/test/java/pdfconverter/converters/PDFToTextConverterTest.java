@@ -16,7 +16,6 @@
 package pdfconverter.converters;
 
 import java.io.File;
-import java.net.URI;
 import java.net.URL;
 
 import org.junit.Assert;
@@ -41,6 +40,7 @@ public class PDFToTextConverterTest {
 		pdfConverter = new PDFToTextConverter();
 		URL fileUri = getClass().getClassLoader().getResource("table.pdf");
 		pdfTest = new File(fileUri.getFile());
+		
 		
 	}
 
