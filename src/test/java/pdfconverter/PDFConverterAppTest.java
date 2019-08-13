@@ -11,6 +11,6 @@ package pdfconverter;
  *
  */
 
-public class MainTest {
+public class PDFConverterAppTest {
 
 }

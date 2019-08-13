@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 
 import org.apache.commons.io.FilenameUtils;
 
-import pdfconverter.converters.PDFConverter;
+import pdfconverter.converters.PDFToTextConverter;
 
 /**
  * @Author: Alisher Urunov
@@ -19,14 +19,14 @@ import pdfconverter.converters.PDFConverter;
  * mission of author is prohibited!
  *
  */
-public class Main {
+public class PDFConverterApp {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		
-		PDFConverter converter = new PDFConverter();
+		PDFToTextConverter converter = new PDFToTextConverter();
 		
 		File[] listOFPdfs = new File(args[0]).getAbsoluteFile().listFiles(new FilenameFilter() {
 			@Override
@@ -48,7 +48,7 @@ public class Main {
 				System.out.println(outputFolder+File.separator+FilenameUtils.removeExtension(file.getName())+".txt");
 				file.createNewFile();
 				PrintWriter newTextFile = new PrintWriter(finalOutput,"ASCII");
-				newTextFile.print(converter.convertWithFormatting(file));
+				newTextFile.print(converter.convert(file));
 				newTextFile.close();
 			} catch (IOException e) {
 			
